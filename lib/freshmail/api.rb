@@ -23,11 +23,14 @@ module Freshmail
     end
 
     def subscriber(sub_info = {})
-      call_freshmail(:get, 'subscriber/get', sub_info)
+      list = sub_info[:list]
+      email = sub_info[:email]
+      
+      call_freshmail(:get, "subscriber/get/#{l}/#{e}")
     end
 
     def subscribers(sub_info = {})
-      call_freshmail(:get, 'subscriber/getMultiple', sub_info)
+      call_freshmail(:post, 'subscriber/getMultiple', sub_info)
     end
 
     def add_subscriber(sub_info = {})
@@ -78,11 +81,7 @@ module Freshmail
           req.headers['Content-Type'] = 'application/json'
           req.headers['X-Rest-ApiKey'] = self.api_key
           req.headers['X-Rest-ApiSign'] = api_sign(endpoint, json_data_converted)
-          if req.method == :get
-            req.params = json_data if json_data
-          else
-            req.body = json_data_converted
-          end
+          req.body = json_data_converted if req.method == :post
         end
 
         JSON.parse(response.body)

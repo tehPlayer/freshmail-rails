@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Freshmail::VERSION
   s.authors     = ["Marcin Jan Adamczyk"]
   s.email       = ["marcin.adamczyk@subcom.me"]
-  s.homepage    = "https://github.com/tehPlayer/freshmail_rails"
+  s.homepage    = "https://github.com/tehPlayer/freshmail-rails"
   s.summary     = "FreshMail.pl API wrapper"
   s.description = "FreshMail.pl API wrapper"
   s.license     = "MIT"
