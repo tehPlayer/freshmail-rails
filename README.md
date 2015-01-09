@@ -1,4 +1,4 @@
-= Freshmail
+Freshmail
 ===================
 
 This is a Rails Gem for Freshmail REST API.
