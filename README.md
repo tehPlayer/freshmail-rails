@@ -58,6 +58,11 @@ freshmail.update_list(...)
 freshmail.delete_list(...)
 ```
 
+## Contribution
+
+If you want to contribute to the code, just create pull request, and I will merge it ASAP. 
+Thank you for help.
+
 ## TODO
 
 Add more methods.
