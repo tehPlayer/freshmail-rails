@@ -72,7 +72,7 @@ module Freshmail
 
         conn = Faraday.new(:url => URL) do |faraday|
           faraday.request  :url_encoded             
-          faraday.response :logger                  
+          # faraday.response :logger                  
           faraday.adapter  Faraday.default_adapter  
         end
 
