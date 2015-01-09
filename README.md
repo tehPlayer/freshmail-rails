@@ -20,7 +20,7 @@ gem 'freshmail'
 Create instance of gem:
 
 ```ruby
-freshmail = Freshmail::Api.new('YOUR_API_KEY', 'YOUR_API_SECRET')
+freshmail = Freshmail::Client.new('YOUR_API_KEY', 'YOUR_API_SECRET')
 ```
 
 After that, you can access Freshmail methods, for example:

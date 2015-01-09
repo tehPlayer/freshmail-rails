@@ -1,7 +1,7 @@
 require 'faraday'
 require 'json'
 
-require 'freshmail/api'
+require 'freshmail/client'
 require 'freshmail/errors'
 
 module Freshmail

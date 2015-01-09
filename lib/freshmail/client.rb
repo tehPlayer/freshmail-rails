@@ -1,5 +1,5 @@
 module Freshmail
-  class Api
+  class Client
     attr_accessor :api_key, :api_secret
 
     URL = 'https://app.freshmail.pl'
