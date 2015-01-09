@@ -15,26 +15,74 @@ module Freshmail
     end
 
     def ping
-      call_freshmail('ping')
+      call_freshmail(:get, 'ping')
+    end
+
+    def mail(mail_data = {})
+      call_freshmail(:post, 'mail', mail_data)
+    end
+
+    def subscriber(sub_info = {})
+      call_freshmail(:get, 'subscriber/get', sub_info)
+    end
+
+    def subscribers(sub_info = {})
+      call_freshmail(:get, 'subscriber/getMultiple', sub_info)
+    end
+
+    def add_subscriber(sub_info = {})
+      call_freshmail(:post, 'subscriber/add', sub_info)
+    end
+
+    def batch_add_subscriber(sub_info = {})
+      call_freshmail(:post, 'subscriber/addMultiple', sub_info)
+    end
+
+    def delete_subscriber(sub_info = {})
+      call_freshmail(:post, 'subscriber/delete', sub_info)
+    end
+
+    def batch_delete_subscriber(sub_info = {})
+      call_freshmail(:post, 'subscriber/deleteMultiple', sub_info)
+    end
+
+    def lists
+      call_freshmail(:get, 'subscribers_list/lists')
+    end
+
+    def create_list(list_info = {})
+      call_freshmail(:post, 'subscribers_list/create', list_info)
+    end
+
+    def update_list(list_info = {})
+      call_freshmail(:post, 'subscribers_list/update', list_info)
+    end
+
+    def delete_list(list_info = {})
+      call_freshmail(:post, 'subscribers_list/delete', list_info)
     end
 
     protected
-      def call_freshmail(get_data, json_data = nil)
+      def call_freshmail(call_type, get_data, json_data = nil)
         json_data_converted = json_data ? json_data.to_json : '' 
         endpoint = "/rest/#{get_data}"
 
         conn = Faraday.new(:url => URL) do |faraday|
           faraday.request  :url_encoded             
-          # faraday.response :logger                  
+          faraday.response :logger                  
           faraday.adapter  Faraday.default_adapter  
         end
 
-        response = conn.get do |req|
+        response = conn.send(call_type) do |req|
           req.url endpoint
           req.headers['Content-Type'] = 'application/json'
           req.headers['X-Rest-ApiKey'] = self.api_key
           req.headers['X-Rest-ApiSign'] = api_sign(endpoint, json_data_converted)
-          req.params = json_data if json_data
+          if req.method == :get
+            req.params = json_data if json_data
+          else
+            req.body = json_data_converted
+          end
         end
 
         JSON.parse(response.body)
