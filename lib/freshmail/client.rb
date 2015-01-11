@@ -2,7 +2,7 @@ module Freshmail
   class Client
     attr_accessor :api_key, :api_secret
 
-    URL = 'https://app.freshmail.pl'
+    URL = 'https://api.freshmail.pl'
 
     def initialize(api_key, api_secret)
       @api_key = api_key || self.class.api_key || ENV['FRESHMAIL_API_KEY']
@@ -26,7 +26,7 @@ module Freshmail
       list = sub_info[:list]
       email = sub_info[:email]
       
-      call_freshmail(:get, "subscriber/get/#{l}/#{e}")
+      call_freshmail(:get, "subscriber/get/#{list}/#{email}")
     end
 
     def subscribers(sub_info = {})
