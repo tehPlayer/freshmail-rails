@@ -25,7 +25,7 @@ module Freshmail
     def subscriber(sub_info = {})
       list = sub_info[:list]
       email = sub_info[:email]
-      
+
       call_freshmail(:get, "subscriber/get/#{list}/#{email}")
     end
 
@@ -35,6 +35,10 @@ module Freshmail
 
     def add_subscriber(sub_info = {})
       call_freshmail(:post, 'subscriber/add', sub_info)
+    end
+
+    def edit_subscriber(sub_info = {})
+      call_freshmail(:post, 'subscriber/edit', sub_info)
     end
 
     def batch_add_subscriber(sub_info = {})
@@ -67,13 +71,13 @@ module Freshmail
 
     protected
       def call_freshmail(call_type, get_data, json_data = nil)
-        json_data_converted = json_data ? json_data.to_json : '' 
+        json_data_converted = json_data ? json_data.to_json : ''
         endpoint = "/rest/#{get_data}"
 
         conn = Faraday.new(:url => URL) do |faraday|
-          faraday.request  :url_encoded             
-          # faraday.response :logger                  
-          faraday.adapter  Faraday.default_adapter  
+          faraday.request  :url_encoded
+          # faraday.response :logger
+          faraday.adapter  Faraday.default_adapter
         end
 
         response = conn.send(call_type) do |req|
