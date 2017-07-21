@@ -44,6 +44,10 @@ module Freshmail
     def batch_add_subscriber(sub_info = {})
       call_freshmail(:post, 'subscriber/addMultiple', sub_info)
     end
+    
+    def batch_edit_subscriber(sub_info = {})
+       call_freshmail(:post, 'subscriber/editMultiple', sub_info)
+    end  
 
     def delete_subscriber(sub_info = {})
       call_freshmail(:post, 'subscriber/delete', sub_info)
