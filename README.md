@@ -51,6 +51,7 @@ freshmail.subscribers(...)
 freshmail.add_subscriber(...)
 freshmail.edit_subscriber(...)
 freshmail.batch_add_subscriber(...)
+freshmail.batch_edit_subscriber(...)
 freshmail.delete_subscriber(...)
 freshmail.batch_delete_subscriber(...)
 freshmail.lists
