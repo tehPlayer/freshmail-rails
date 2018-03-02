@@ -72,7 +72,7 @@ Add tests.
 
 ## Licence
 
-Copyright (c) 2015 Marcin Adamczyk, released under the MIT license
+Copyright (c) 2018 Marcin Adamczyk, released under the MIT license
 
 
-*Feel free to contact me if you need help: marcin.adamczyk [--a-t--] subcom.me*
+*Feel free to contact me if you need help: adamczyk.marcin [--a-t--] outlook.com*
