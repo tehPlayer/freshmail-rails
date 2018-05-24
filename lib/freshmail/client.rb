@@ -2,7 +2,7 @@ module Freshmail
   class Client
     attr_accessor :api_key, :api_secret
 
-    URL = 'https://api.freshmail.com/'
+    URL = 'https://api.freshmail.com/rest/'
 
     def initialize(api_key, api_secret)
       @api_key = api_key || self.class.api_key || ENV['FRESHMAIL_API_KEY']
